@@ -28,6 +28,7 @@ import {
   ChevronDown,
   ChevronUp,
   X,
+  Menu,
   ChevronLeft,
   ChevronRight,
   Loader2,
@@ -253,6 +254,8 @@ function Portfolio() {
 }
 
 function Nav() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-40 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
@@ -262,9 +265,11 @@ function Nav() {
           </span>
           <span className="hidden sm:inline">Wallelign Workie</span>
         </a>
+
+        {/* Desktop Nav */}
         <nav className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
           <a href="#work" className="transition hover:text-foreground">
-            Work
+            Work/Projects
           </a>
           <a href="#experience" className="transition hover:text-foreground">
             Experience
@@ -279,13 +284,68 @@ function Nav() {
             Contact
           </a>
         </nav>
-        <a
-          href="#contact"
-          className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-glow transition hover:opacity-90"
-        >
-          Let's talk <ArrowUpRight className="h-4 w-4" />
-        </a>
+
+        {/* Actions & Hamburger Toggle */}
+        <div className="flex items-center gap-3">
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-glow transition hover:opacity-90"
+          >
+            Let's talk <ArrowUpRight className="h-4 w-4" />
+          </a>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface/40 text-muted-foreground transition hover:bg-surface/80 hover:text-foreground md:hidden"
+            aria-label="Toggle navigation menu"
+          >
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu List View */}
+      {isOpen && (
+        <div className="border-b border-border bg-background/95 backdrop-blur-xl md:hidden animate-in fade-in slide-in-from-top-4 duration-200">
+          <nav className="flex flex-col gap-4 px-5 py-6 sm:px-8">
+            <a
+              href="#work"
+              onClick={() => setIsOpen(false)}
+              className="text-lg font-medium text-muted-foreground transition hover:text-foreground"
+            >
+              Work/Projects
+            </a>
+            <a
+              href="#experience"
+              onClick={() => setIsOpen(false)}
+              className="text-lg font-medium text-muted-foreground transition hover:text-foreground"
+            >
+              Experience
+            </a>
+            <a
+              href="#testimonials"
+              onClick={() => setIsOpen(false)}
+              className="text-lg font-medium text-muted-foreground transition hover:text-foreground"
+            >
+              Testimonials
+            </a>
+            <a
+              href="#stack"
+              onClick={() => setIsOpen(false)}
+              className="text-lg font-medium text-muted-foreground transition hover:text-foreground"
+            >
+              Stack
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setIsOpen(false)}
+              className="text-lg font-medium text-muted-foreground transition hover:text-foreground"
+            >
+              Contact
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
@@ -588,7 +648,7 @@ function ProjectLightbox({
           onPrev();
         }}
         aria-label="Previous"
-        className="absolute left-3 top-1/2 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-border bg-surface/80 text-foreground transition hover:border-primary/60 sm:left-6"
+        className="absolute left-3 top-1/2 z-10 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-border bg-surface/80 text-foreground transition hover:border-primary/60 sm:left-6"
       >
         <ChevronLeft className="h-6 w-6" />
       </button>
@@ -600,7 +660,7 @@ function ProjectLightbox({
           onNext();
         }}
         aria-label="Next"
-        className="absolute right-3 top-1/2 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-border bg-surface/80 text-foreground transition hover:border-primary/60 sm:right-6"
+        className="absolute right-3 top-1/2 z-10 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-border bg-surface/80 text-foreground transition hover:border-primary/60 sm:right-6"
       >
         <ChevronRight className="h-6 w-6" />
       </button>
