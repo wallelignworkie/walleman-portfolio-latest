@@ -22,6 +22,7 @@ import {
   ListChecks,
   CreditCard,
   Briefcase,
+  GraduationCap,
   Quote,
   Send,
   Check,
@@ -35,11 +36,31 @@ import {
   Copy,
 } from "lucide-react";
 import projEcommerce from "@/assets/proj-ecommerce.jpg";
+
 import projTracking from "@/assets/proj-tracking.jpg";
 import projShareholder from "@/assets/proj-shareholder.jpg";
 import projTasks from "@/assets/proj-tasks.jpg";
 import projPayment from "@/assets/proj-payment.jpg";
 import projJobs from "@/assets/proj-jobs.jpg";
+
+// exam prep project,
+import projOneExamPrep from "@/assets/exam/image-1.png";
+import projTwoExamPrep from "@/assets/exam/image-2.png";
+import projThreeExamPrep from "@/assets/exam/image-3.png";
+import projFourExamPrep from "@/assets/exam/image-4.png";
+import projFiveExamPrep from "@/assets/exam/image-5.png";
+import projSixExamPrep from "@/assets/exam/image-6.png";
+import projSevenExamPrep from "@/assets/exam/image-7.png";
+import projectEgightImages from "@/assets/exam/image-8.png";
+import projectNineImages from "@/assets/exam/image-9.png";
+import projectTenImages from "@/assets/exam/image-10.png";
+import projectElevenImages from "@/assets/exam/image-11.png";
+
+import kudusImageOne from "@/assets/kdusecommerce/image-1.png";
+import kudusImageTwo from "@/assets/kdusecommerce/image-2.png";
+import kudusImagethree from "@/assets/kdusecommerce/image-3.png";
+import kudusImageFour from "@/assets/kdusecommerce/image-4.png";
+import kudusImageFive from "@/assets/kdusecommerce/image-5.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -85,53 +106,13 @@ type Project = {
   metrics: string[];
   stack: string[];
   icon: typeof ShoppingBag;
-  // Drop a screenshot URL here later (e.g. "/projects/ecommerce.png").
-  // If null, a branded gradient preview is rendered automatically.
-  image?: string | null;
+  // Drop a screenshot URL here later (e.g. ["/projects/ecommerce.png"]).
+  // If empty, a branded gradient preview is rendered automatically.
+  images?: string[];
   accent: string;
 };
 
 const PROJECTS: Project[] = [
-  {
-    title: "E-Commerce Platform",
-    blurb:
-      "Secure full-stack commerce with personalized recommendations, reviews, and Stripe-style checkout.",
-    metrics: ["+30% checkout efficiency", "−35% page load", "10+ shipped features"],
-    stack: ["React", "Node.js", "MySQL", "REST"],
-    icon: ShoppingBag,
-    image: projEcommerce,
-    accent: "from-violet-500/40 to-indigo-500/10",
-  },
-  {
-    title: "Package Tracking System",
-    blurb:
-      "Real-time logistics platform with live tracking events and scalable ingestion for 5,000+ users.",
-    metrics: ["−40% delivery delays", "40% faster pipeline", "5k+ users"],
-    stack: ["Next.js", "Nest.js", "PostgreSQL"],
-    icon: PackageSearch,
-    image: projTracking,
-    accent: "from-fuchsia-500/40 to-purple-500/10",
-  },
-  {
-    title: "Shareholder Management",
-    blurb:
-      "Enterprise platform for shareholder records, transactions, and secure reporting at scale.",
-    metrics: ["1,200+ users", "+25% data accuracy", "−30% data errors"],
-    stack: ["Laravel", "MySQL", "REST"],
-    icon: Wallet,
-    image: projShareholder,
-    accent: "from-blue-500/40 to-indigo-500/10",
-  },
-  {
-    title: "Task Management App",
-    blurb:
-      "Real-time collaborative productivity workspace with workflow tracking and team analytics.",
-    metrics: ["+20% team productivity", "Realtime sync", "Workflow analytics"],
-    stack: ["React", "Node.js", "MongoDB"],
-    icon: ListChecks,
-    image: projTasks,
-    accent: "from-cyan-500/40 to-blue-500/10",
-  },
   {
     title: "Payment Gateway Integration",
     blurb:
@@ -139,7 +120,7 @@ const PROJECTS: Project[] = [
     metrics: ["99.98% success rate", "5+ providers", "PCI-aware design"],
     stack: ["Nest.js", "PostgreSQL", "Redis", "Stripe"],
     icon: CreditCard,
-    image: projPayment,
+    images: [projPayment],
     accent: "from-emerald-500/40 to-teal-500/10",
   },
   {
@@ -149,8 +130,80 @@ const PROJECTS: Project[] = [
     metrics: ["3k+ matches/mo", "+45% recruiter response", "Smart ranking"],
     stack: ["Next.js", "Node.js", "PostgreSQL", "Redis"],
     icon: Briefcase,
-    image: projJobs,
+    images: [projJobs],
     accent: "from-amber-500/40 to-rose-500/10",
+  },
+  {
+    title: "Exam preparation Platform",
+    blurb:
+      "This platform helps students prepare for exams based on their grade level by providing personalized learning resources and study materials. Students can connect with teachers online for guidance and academic support, while an AI assistant offers instant help by answering questions and providing learning recommendations.",
+    metrics: ["AI Study Assistant", "Online Teacher Support", "Referral Rewards"],
+    stack: ["Next.js", "Node.js", "PostgreSQL", "Redis", "OpenAI API"],
+    icon: GraduationCap,
+    images: [
+      projOneExamPrep,
+      projTwoExamPrep,
+      projThreeExamPrep,
+      projFourExamPrep,
+      projFiveExamPrep,
+      projSixExamPrep,
+      projSevenExamPrep,
+      projectEgightImages,
+      projectNineImages,
+      projectTenImages,
+      projectElevenImages,
+    ],
+    accent: "from-amber-500/40 to-rose-500/10",
+  },
+  {
+    title: "Kidus E-Commerce Platform",
+    blurb:
+      "Unified payments layer with multi-provider support, webhook reconciliation, and fraud signals.",
+    metrics: ["99.98% success rate", "5+ providers", "PCI-aware design"],
+    stack: ["Next.js", "Nest.js", "PostgreSQL", "Microservice", "Docker"],
+    icon: CreditCard,
+    images: [kudusImageOne, kudusImageTwo, kudusImagethree, kudusImageFour, kudusImageFive],
+    accent: "from-emerald-500/40 to-teal-500/10",
+  },
+  {
+    title: "E-Commerce Platform",
+    blurb:
+      "Secure full-stack commerce with personalized recommendations, reviews, and Stripe-style checkout.",
+    metrics: ["+30% checkout efficiency", "−35% page load", "10+ shipped features"],
+    stack: ["React", "Node.js", "MySQL", "REST"],
+    icon: ShoppingBag,
+    images: [projEcommerce, projPayment],
+    accent: "from-violet-500/40 to-indigo-500/10",
+  },
+  {
+    title: "Package Tracking System",
+    blurb:
+      "Real-time logistics platform with live tracking events and scalable ingestion for 5,000+ users.",
+    metrics: ["−40% delivery delays", "40% faster pipeline", "5k+ users"],
+    stack: ["Next.js", "Nest.js", "PostgreSQL"],
+    icon: PackageSearch,
+    images: [projTracking],
+    accent: "from-fuchsia-500/40 to-purple-500/10",
+  },
+  {
+    title: "Shareholder Management",
+    blurb:
+      "Enterprise platform for shareholder records, transactions, and secure reporting at scale.",
+    metrics: ["1,200+ users", "+25% data accuracy", "−30% data errors"],
+    stack: ["Laravel", "MySQL", "REST"],
+    icon: Wallet,
+    images: [projShareholder],
+    accent: "from-blue-500/40 to-indigo-500/10",
+  },
+  {
+    title: "Task Management App",
+    blurb:
+      "Real-time collaborative productivity workspace with workflow tracking and team analytics.",
+    metrics: ["+20% team productivity", "Realtime sync", "Workflow analytics"],
+    stack: ["React", "Node.js", "MongoDB"],
+    icon: ListChecks,
+    images: [projTasks],
+    accent: "from-cyan-500/40 to-blue-500/10",
   },
 ];
 
@@ -513,19 +566,20 @@ function Stat({ icon: Icon, label, value }: { icon: typeof Users; label: string;
 
 function ProjectPreview({ project, onOpen }: { project: Project; onOpen?: () => void }) {
   const Icon = project.icon;
-  const hasImage = Boolean(project.image);
+  const hasImages = Boolean(project.images && project.images.length > 0);
+  const mainImage = project.images?.[0];
   return (
     <button
       type="button"
       onClick={onOpen}
-      disabled={!hasImage}
-      aria-label={hasImage ? `Open ${project.title} screenshot` : undefined}
+      disabled={!hasImages}
+      aria-label={hasImages ? `Open ${project.title} screenshot` : undefined}
       className="relative block aspect-[16/9] w-full overflow-hidden rounded-xl border border-border bg-surface/40 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 disabled:cursor-default"
     >
-      {hasImage ? (
+      {hasImages && mainImage ? (
         <>
           <img
-            src={project.image as string}
+            src={mainImage}
             alt={`${project.title} screenshot`}
             className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
             loading="lazy"
@@ -590,19 +644,18 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen?: () => voi
   );
 }
 
-function ProjectLightbox({
-  projects,
-  index,
-  onClose,
-  onPrev,
-  onNext,
-}: {
-  projects: Project[];
-  index: number;
-  onClose: () => void;
-  onPrev: () => void;
-  onNext: () => void;
-}) {
+function ProjectLightbox({ project, onClose }: { project: Project; onClose: () => void }) {
+  const [imageIndex, setImageIndex] = useState(0);
+  const images = project.images || [];
+
+  const onNext = useCallback(() => {
+    setImageIndex((i) => (i + 1) % images.length);
+  }, [images.length]);
+
+  const onPrev = useCallback(() => {
+    setImageIndex((i) => (i - 1 + images.length) % images.length);
+  }, [images.length]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -618,8 +671,8 @@ function ProjectLightbox({
     };
   }, [onClose, onPrev, onNext]);
 
-  const project = projects[index];
-  if (!project || !project.image) return null;
+  if (images.length === 0) return null;
+  const currentImage = images[imageIndex];
 
   return (
     <div
@@ -641,34 +694,38 @@ function ProjectLightbox({
         <X className="h-5 w-5" />
       </button>
 
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          onPrev();
-        }}
-        aria-label="Previous"
-        className="absolute left-3 top-1/2 z-10 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-border bg-surface/80 text-foreground transition hover:border-primary/60 sm:left-6"
-      >
-        <ChevronLeft className="h-6 w-6" />
-      </button>
+      {images.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onPrev();
+            }}
+            aria-label="Previous"
+            className="absolute left-3 top-1/2 z-10 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-border bg-surface/80 text-foreground transition hover:border-primary/60 sm:left-6"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
 
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          onNext();
-        }}
-        aria-label="Next"
-        className="absolute right-3 top-1/2 z-10 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-border bg-surface/80 text-foreground transition hover:border-primary/60 sm:right-6"
-      >
-        <ChevronRight className="h-6 w-6" />
-      </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onNext();
+            }}
+            aria-label="Next"
+            className="absolute right-3 top-1/2 z-10 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-border bg-surface/80 text-foreground transition hover:border-primary/60 sm:right-6"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+        </>
+      )}
 
       <figure className="relative w-full max-w-6xl" onClick={(e) => e.stopPropagation()}>
         <img
-          src={project.image as string}
-          alt={`${project.title} screenshot`}
+          src={currentImage}
+          alt={`${project.title} screenshot ${imageIndex + 1}`}
           className="mx-auto max-h-[80vh] w-auto max-w-full rounded-xl border border-border shadow-2xl"
         />
         <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm">
@@ -676,9 +733,11 @@ function ProjectLightbox({
             <p className="font-display text-lg font-semibold">{project.title}</p>
             <p className="text-muted-foreground">{project.blurb}</p>
           </div>
-          <span className="font-mono text-xs text-muted-foreground">
-            {index + 1} / {projects.length}
-          </span>
+          {images.length > 1 && (
+            <span className="font-mono text-xs text-muted-foreground">
+              {imageIndex + 1} / {images.length}
+            </span>
+          )}
         </figcaption>
       </figure>
     </div>
@@ -687,30 +746,16 @@ function ProjectLightbox({
 
 function ProjectsSection() {
   const [expanded, setExpanded] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const visible = expanded ? PROJECTS : PROJECTS.slice(0, 4);
-  const galleryProjects = PROJECTS.filter((p) => p.image);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const visible = expanded ? PROJECTS : PROJECTS.slice(0, 6);
 
-  const openLightbox = useCallback(
-    (project: Project) => {
-      const idx = galleryProjects.findIndex((p) => p.title === project.title);
-      if (idx >= 0) setLightboxIndex(idx);
-    },
-    [galleryProjects],
-  );
+  const openLightbox = useCallback((project: Project) => {
+    if (project.images && project.images.length > 0) {
+      setActiveProject(project);
+    }
+  }, []);
 
-  const close = useCallback(() => setLightboxIndex(null), []);
-  const next = useCallback(
-    () => setLightboxIndex((i) => (i === null ? i : (i + 1) % galleryProjects.length)),
-    [galleryProjects.length],
-  );
-  const prev = useCallback(
-    () =>
-      setLightboxIndex((i) =>
-        i === null ? i : (i - 1 + galleryProjects.length) % galleryProjects.length,
-      ),
-    [galleryProjects.length],
-  );
+  const close = useCallback(() => setActiveProject(null), []);
 
   return (
     <section id="work" className="mt-24">
@@ -740,15 +785,7 @@ function ProjectsSection() {
         </button>
       </div>
 
-      {lightboxIndex !== null && (
-        <ProjectLightbox
-          projects={galleryProjects}
-          index={lightboxIndex}
-          onClose={close}
-          onPrev={prev}
-          onNext={next}
-        />
-      )}
+      {activeProject && <ProjectLightbox project={activeProject} onClose={close} />}
     </section>
   );
 }
