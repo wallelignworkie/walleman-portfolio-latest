@@ -7,6 +7,8 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { nitro } from "nitro/vite";
 
+import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
@@ -17,6 +19,21 @@ export default defineConfig({
     plugins: [
       nitro({
         preset: "vercel",
+      }),
+      ViteImageOptimizer({
+        /* pass your config */
+        png: {
+          quality: 80,
+        },
+        jpeg: {
+          quality: 80,
+        },
+        jpg: {
+          quality: 80,
+        },
+        webp: {
+          lossless: true,
+        },
       }),
     ],
   },

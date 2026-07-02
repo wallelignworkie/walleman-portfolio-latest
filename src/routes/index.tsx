@@ -583,6 +583,7 @@ function ProjectPreview({ project, onOpen }: { project: Project; onOpen?: () => 
             alt={`${project.title} screenshot`}
             className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
             loading="lazy"
+            decoding="async"
             width={1280}
             height={800}
           />
@@ -727,6 +728,8 @@ function ProjectLightbox({ project, onClose }: { project: Project; onClose: () =
           src={currentImage}
           alt={`${project.title} screenshot ${imageIndex + 1}`}
           className="mx-auto max-h-[80vh] w-auto max-w-full rounded-xl border border-border shadow-2xl"
+          loading="lazy"
+          decoding="async"
         />
         <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm">
           <div>
